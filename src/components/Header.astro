@@ -1,0 +1,108 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navItems = [
+  { title: "Experiencia", label: "experiencia", url: "/#experiencia" },
+  { title: "Proyectos", label: "proyectos", url: "/#proyectos" },
+  { title: "Cursos", label: "cursos", url: "/#cursos" },
+  { title: "Sobre mí", label: "sobre-mi", url: "/#sobre-mi" },
+  { title: "Contacto", label: "contacto", url: "/#contacto" },
+];
+---
+
+<header
+  class="fixed top-2 md:top-4 z-50 flex justify-center w-full px-2 md:px-4"
+>
+  <nav
+    class="flex items-center md:gap-3
+    bg-white/10 dark:bg-blue-900/40
+    backdrop-blur-md
+    rounded-full
+    px-3 py-1 md:px-4 md:py-1.5
+    shadow-md
+    border border-white/20 dark:border-cyan-400/30
+    w-fit max-w-full
+    font-mono text-xs md:text-sm font-semibold
+    text-gray-700 dark:text-cyan-300
+    transition-all duration-300"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          href={link.url}
+          aria-label={link.label}
+          class="
+            relative
+            px-2 py-0.5 md:px-3 md:py-1
+            rounded-md
+            transition
+            text-gray-900 dark:text-cyan-300
+            hover:text-blue-600 dark:hover:text-cyan-200
+          "
+        >
+          {link.title}
+          <span
+            aria-hidden="true"
+            class="
+              absolute bottom-0 left-1/2 transform -translate-x-1/2
+              h-[1.5px] md:h-[2px] w-0
+              bg-blue-600 dark:bg-cyan-200
+              transition-all duration-300
+              rounded
+            "
+          />
+        </a>
+      ))
+    }
+    <ThemeToggle />
+  </nav>
+</header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            const indicator = item.querySelector("span");
+            if (item.getAttribute("aria-label") === entry.target.id) {
+              item.classList.add("text-cyan-400", "dark:text-cyan-200");
+              item.classList.remove("text-gray-700", "dark:text-cyan-300");
+              if (indicator) indicator.style.width = "50%";
+            } else {
+              item.classList.remove("text-cyan-400", "dark:text-cyan-200");
+              item.classList.add("text-gray-700", "dark:text-cyan-300");
+              if (indicator) indicator.style.width = "0";
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => observer.observe(section));
+
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") observer.disconnect();
+      else sections.forEach((section) => observer.observe(section));
+    };
+  });
+</script>
+
+<style>
+  header nav a {
+    cursor: pointer;
+  }
+
+  header nav a:hover span {
+    width: 50% !important;
+  }
+</style>

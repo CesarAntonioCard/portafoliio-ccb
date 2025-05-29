@@ -1,0 +1,95 @@
+---
+const personalImageAlt = "César Cardozo";
+import Badge from "@/components/Badge.astro";
+import LinkedInIcon from "@/components/icons/contacto/LinkedIn.astro";
+import MailIcon from "@/components/icons/contacto/Gmail.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import WhatsApp from "./icons/contacto/WhatsApp.astro";
+import GitHub from "./icons/contacto/GitHub.astro";
+---
+
+<div
+  class="relative max-w-4xl mx-auto w-full px-6 py-10 rounded-2xl
+  bg-gradient-to-br from-blue-100 via-white to-blue-200
+  dark:from-blue-950 dark:via-blue-900 dark:to-black
+  shadow-xl dark:shadow-2xl border border-blue-200 dark:border-blue-800
+  ring-1 ring-blue-300/30 dark:ring-blue-600/20 backdrop-blur-lg
+  space-y-10 overflow-hidden transition-colors duration-300"
+>
+  <div
+    class="absolute inset-0 z-0 opacity-10 [mask-image:linear-gradient(to_bottom,transparent,black)]"
+  >
+    <div
+      class="absolute w-full h-full animate-pulse
+      bg-[radial-gradient(theme(colors.blue.300)_1px,transparent_1px)]
+      dark:bg-[radial-gradient(theme(colors.cyan.400)_1px,transparent_1px)]
+      bg-[length:16px_16px]"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-10 flex flex-col items-center text-center gap-4">
+    <img
+      class="w-40 h-40 rounded-xl border-2 border-blue-400 dark:border-cyan-500 shadow-lg object-cover transition hover:scale-105 duration-300"
+      src="/Yo.png"
+      alt={personalImageAlt}
+    />
+    <Badge
+      href="https://linkedin.com/in/césar-cardozo-briceño"
+      class="bg-blue-200/60 text-blue-900 dark:bg-blue-600/20 dark:text-blue-300 border border-blue-400 dark:border-blue-500 shadow-md"
+    >
+      Disponible para nuevos proyectos
+    </Badge>
+  </div>
+
+  <div class="relative z-10 text-center">
+    <h1
+      class="text-3xl sm:text-5xl font-mono font-bold text-blue-900 dark:text-white tracking-widest"
+    >
+      {personalImageAlt}
+    </h1>
+    <p
+      class="mt-4 text-base sm:text-lg text-blue-800 dark:text-white/90 font-mono leading-relaxed"
+    >
+      Ingeniero de Sistemas Computacionales de
+      <strong
+        class="font-semibold text-blue-950 dark:text-cyan-300 underline underline-offset-2 decoration-blue-300 dark:decoration-cyan-400 dark:no-underline"
+      >
+        Cajamarca, Perú 🇵🇪
+      </strong>
+      con 1 año de experiencia. Apasionado por el
+      <strong
+        class="font-semibold text-blue-950 dark:text-cyan-300 underline underline-offset-2 decoration-blue-300 dark:decoration-cyan-400 dark:no-underline"
+      >
+        desarrollo web
+      </strong>
+      y la creación de soluciones de
+      <strong
+        class="font-semibold text-blue-950 dark:text-cyan-300 underline underline-offset-2 decoration-blue-300 dark:decoration-cyan-400 dark:no-underline"
+      >
+        software modernas y eficientes</strong
+      >.
+    </p>
+  </div>
+
+  <nav
+    class="relative z-10 flex flex-wrap justify-center gap-3 pt-6 border-t border-blue-300 dark:border-blue-800/40"
+  >
+    <SocialPill href="mailto:cesarcardozobriceno@gmail.com">
+      <MailIcon class="size-4" />
+      Email
+    </SocialPill>
+    <SocialPill href="https://linkedin.com/in/césar-cardozo-briceño">
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href="https://wa.me/51973944957">
+      <WhatsApp class="size-4" />
+      WhatsApp
+    </SocialPill>
+    <SocialPill href="https://github.com/CesarAntonioCard">
+      <GitHub class="size-4" />
+      GitHub
+    </SocialPill>
+  </nav>
+</div>
