@@ -1,21 +1,558 @@
 ---
-import Udemy from "./icons/curso/Udemy.astro";
-import Coursera from "./icons/curso/Coursera.astro";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+import SliderButton from "@/components/SliderButton.astro";
+import CourseCard from "@/components/CourseCard.astro";
+import Add from "@/components/icons/Add.astro";
+import Certiprof_BusinessIntelligence from "../../public/certificate/Certiprof_BusinessIntelligence.webp";
+import Certiprof_Cybersecurity from "../../public/certificate/Certiprof_Cybersecurity.webp";
+import Certiprof_Scrum from "../../public/certificate/Certiprof_Scrum.webp";
+import Certiprof_ScrumFoundation from "../../public/certificate/Certiprof_ScrumFoundation.webp";
+
+import CF_BD from "../../public/certificate/CF_BD.webp";
+import CF_Java from "../../public/certificate/CF_Java.webp";
+
+import Coursera_UX from "../../public/certificate/Coursera_UX.webp";
+
+import CS_IntroSeguridad from "../../public/certificate/CS_IntroSeguridad.webp";
+import CS_Linux from "../../public/certificate/CS_Linux.webp";
+import CS_Python from "../../public/certificate/CS_Python.webp";
+import CS_Red1 from "../../public/certificate/CS_Red1.webp";
+import CS_Red2 from "../../public/certificate/CS_Red2.webp";
+import CS_Seguridad from "../../public/certificate/CS_Seguridad.webp";
+
+import Hackathon from "../../public/certificate/Hackathon.webp";
+import HML from "../../public/certificate/HML.webp";
+import NHL from "../../public/certificate/NHL.webp";
+import Portugues from "../../public/certificate/Portugues.webp";
+
+import IBM_DataPython from "../../public/certificate/IBM_DataPython.webp";
+import IBM_IA from "../../public/certificate/IBM_IA.webp";
+
+import Movistar_Gobierno from "../../public/certificate/Movistar_Gobierno.webp";
+import Movistar_HTML5 from "../../public/certificate/Movistar_HTML5.webp";
+import Movistar_Java from "../../public/certificate/Movistar_Java.webp";
+import Movistar_Java1 from "../../public/certificate/Movistar_Java1.webp";
+import Movistar_JavaScript from "../../public/certificate/Movistar_JavaScript.webp";
+import Movistar_Seguridad1 from "../../public/certificate/Movistar_Seguridad1.webp";
+import Movistar_Wordpress from "../../public/certificate/Movistar_Wordpress.webp";
+
+import MS_GitHub from "../../public/certificate/MS_GitHub.webp";
+import MS_PowerBI from "../../public/certificate/MS_PowerBI.webp";
+
+import UD_NodeJS from "../../public/certificate/UD_NodeJS.webp";
+import UD_PostgresSQL from "../../public/certificate/UD_PostgresSQL.webp";
+import UD_PowerBI from "../../public/certificate/UD_PowerBI.webp";
+import UD_React from "../../public/certificate/UD_React.webp";
+
+import UPN_BigData from "../../public/certificate/UPN_BigData.webp";
+import UPN_Ciberseguridad from "../../public/certificate/UPN_Ciberseguridad.webp";
+import UPN_Desarrollo from "../../public/certificate/UPN_Desarrollo.webp";
+import UPN_Ingles from "../../public/certificate/UPN_Ingles.webp";
+import UPN_Programacion from "../../public/certificate/UPN_Programacion.webp";
+
+import Udemy from "@/components/icons/curso/Udemy.astro";
+import Coursera from "@/components/icons/curso/Coursera.astro";
 import IBMIcon from "@/components/icons/software/IBM.astro";
 import CiscoIcon from "@/components/icons/software/Cisco.astro";
 
-const Courses = {
-  Curso1: {
-    name: "Base de datos de 0 a experto",
-    class: "bg-black text-white",
-    icon: Udemy,
-  },
-  Curso2: {
-    name: "Expericia con Tailwind CSS",
-    class: "bg-[#003159] text-white",
-    icon: Coursera,
-  },
+type Tag = {
+  name: string;
+  class: string;
+  icon?: string | AstroComponentFactory;
 };
+
+type Course = {
+  title: string;
+  image: string | ImageMetadata;
+  tags: Tag[];
+};
+
+const COURSES: Course[] = [
+  // Certiprof
+  {
+    title: "Certificado en Scrum Foundation",
+    image: Certiprof_ScrumFoundation,
+    tags: [
+      {
+        name: "CertiProf",
+        class: "bg-purple-700 text-white",
+      },
+    ],
+  },
+  {
+    title: "Certificado Business Intelligence",
+    image: Certiprof_BusinessIntelligence,
+    tags: [
+      {
+        name: "CertiProf",
+        class: "bg-purple-700 text-white",
+      },
+    ],
+  },
+  {
+    title: "Certificado en Cybersecurity",
+    image: Certiprof_Cybersecurity,
+    tags: [
+      {
+        name: "CertiProf",
+        class: "bg-purple-700 text-white",
+      },
+    ],
+  },
+  {
+    title: "Certificado Scrum",
+    image: Certiprof_Scrum,
+    tags: [
+      {
+        name: "CertiProf",
+        class: "bg-purple-700 text-white",
+      },
+    ],
+  },
+
+  // Codigo Facilito
+  {
+    title: "Base de Datos - Código Facilito",
+    image: CF_BD,
+    tags: [
+      {
+        name: "Código Facilito",
+        class: "bg-green-700 text-white",
+      },
+    ],
+  },
+  {
+    title: "Java - Código Facilito",
+    image: CF_Java,
+    tags: [
+      {
+        name: "Código Facilito",
+        class: "bg-green-700 text-white",
+      },
+    ],
+  },
+
+  // Coursera
+  {
+    title: "UX Design - Coursera",
+    image: Coursera_UX,
+    tags: [
+      {
+        name: "Coursera",
+        class: "bg-cyan-100 text-black",
+        icon: Coursera,
+      },
+    ],
+  },
+
+  // Cisco
+  {
+    title: "Fundamentos de Ciberseguridad",
+    image: CS_IntroSeguridad,
+    tags: [
+      {
+        name: "Cisco",
+        class: "bg-blue-100 text-black",
+        icon: CiscoIcon,
+      },
+    ],
+  },
+  {
+    title: "Linux - Cisco",
+    image: CS_Linux,
+    tags: [
+      {
+        name: "Cisco",
+        class: "bg-blue-100 text-black",
+        icon: CiscoIcon,
+      },
+    ],
+  },
+  {
+    title: "Python - Cisco",
+    image: CS_Python,
+    tags: [
+      {
+        name: "Cisco",
+        class: "bg-blue-100 text-black",
+        icon: CiscoIcon,
+      },
+    ],
+  },
+  {
+    title: "Redes 1 - Cisco",
+    image: CS_Red1,
+    tags: [
+      {
+        name: "Cisco",
+        class: "bg-blue-100 text-black",
+        icon: CiscoIcon,
+      },
+    ],
+  },
+  {
+    title: "Redes 2 - Cisco",
+    image: CS_Red2,
+    tags: [
+      {
+        name: "Cisco",
+        class: "bg-blue-100 text-black",
+        icon: CiscoIcon,
+      },
+    ],
+  },
+  {
+    title: "Seguridad - Cisco",
+    image: CS_Seguridad,
+    tags: [
+      {
+        name: "Cisco",
+        class: "bg-blue-100 text-black",
+        icon: CiscoIcon,
+      },
+    ],
+  },
+
+  // IBM
+  {
+    title: "IBM Data Python",
+    image: IBM_DataPython,
+    tags: [
+      {
+        name: "IBM",
+        class: "bg-blue-100 text-black-900",
+        icon: IBMIcon,
+      },
+    ],
+  },
+  {
+    title: "IBM Inteligencia Artificial",
+    image: IBM_IA,
+    tags: [
+      {
+        name: "IBM",
+        class: "bg-blue-100 text-black-900",
+        icon: IBMIcon,
+      },
+    ],
+  },
+
+  // Microsoft
+  {
+    title: "GitHub - Microsoft",
+    image: MS_GitHub,
+    tags: [
+      {
+        name: "Microsoft",
+        class: "bg-blue-900 text-white",
+      },
+    ],
+  },
+  {
+    title: "Power BI - Microsoft",
+    image: MS_PowerBI,
+    tags: [
+      {
+        name: "Microsoft",
+        class: "bg-blue-900 text-white",
+      },
+    ],
+  },
+
+  // Udemy
+  {
+    title: "Node.js - Udemy",
+    image: UD_NodeJS,
+    tags: [
+      {
+        name: "Udemy",
+        class: "bg-red-100 text-black",
+        icon: Udemy,
+      },
+    ],
+  },
+  {
+    title: "PostgreSQL - Udemy",
+    image: UD_PostgresSQL,
+    tags: [
+      {
+        name: "Udemy",
+        class: "bg-red-100 text-black",
+        icon: Udemy,
+      },
+    ],
+  },
+  {
+    title: "Power BI - Udemy",
+    image: UD_PowerBI,
+    tags: [
+      {
+        name: "Udemy",
+        class: "bg-red-100 text-black",
+        icon: Udemy,
+      },
+    ],
+  },
+  {
+    title: "React - Udemy",
+    image: UD_React,
+    tags: [
+      {
+        name: "Udemy",
+        class: "bg-red-100 text-black",
+        icon: Udemy,
+      },
+    ],
+  },
+
+  // UPN
+  {
+    title: "Big Data - UPN",
+    image: UPN_BigData,
+    tags: [
+      {
+        name: "UPN",
+        class: "bg-yellow-600 text-black",
+      },
+    ],
+  },
+  {
+    title: "Ciberseguridad - UPN",
+    image: UPN_Ciberseguridad,
+    tags: [
+      {
+        name: "UPN",
+        class: "bg-yellow-600 text-black",
+      },
+    ],
+  },
+  {
+    title: "Desarrollo Web - UPN",
+    image: UPN_Desarrollo,
+    tags: [
+      {
+        name: "UPN",
+        class: "bg-yellow-600 text-black",
+      },
+    ],
+  },
+  {
+    title: "Inglés - UPN",
+    image: UPN_Ingles,
+    tags: [
+      {
+        name: "UPN",
+        class: "bg-yellow-600 text-black",
+      },
+    ],
+  },
+  {
+    title: "Programación - UPN",
+    image: UPN_Programacion,
+    tags: [
+      {
+        name: "UPN",
+        class: "bg-yellow-600 text-black",
+      },
+    ],
+  },
+  {
+    title: "Gobierno Digital - Movistar",
+    image: Movistar_Gobierno,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "HTML5 - Movistar",
+    image: Movistar_HTML5,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "Java - Movistar",
+    image: Movistar_Java,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "Java 1 - Movistar",
+    image: Movistar_Java1,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "JavaScript - Movistar",
+    image: Movistar_JavaScript,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "Seguridad - Movistar",
+    image: Movistar_Seguridad1,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "WordPress - Movistar",
+    image: Movistar_Wordpress,
+    tags: [
+      {
+        name: "Movistar",
+        class: "bg-blue-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "Hackathon",
+    image: Hackathon,
+    tags: [
+      {
+        name: "Evento",
+        class: "bg-green-600 text-white",
+      },
+    ],
+  },
+  {
+    title: "HML",
+    image: HML,
+    tags: [
+      {
+        name: "Certificado",
+        class: "bg-gray-700 text-white",
+      },
+    ],
+  },
+  {
+    title: "NHL",
+    image: NHL,
+    tags: [
+      {
+        name: "Certificado",
+        class: "bg-gray-700 text-white",
+      },
+    ],
+  },
+  {
+    title: "Portugués",
+    image: Portugues,
+    tags: [
+      {
+        name: "Idioma",
+        class: "bg-yellow-500 text-white",
+      },
+    ],
+  },
+];
+
+const loopedCourses = [...COURSES, ...COURSES, ...COURSES];
 ---
 
-<div class="flex flex-col gap-y-16"></div>
+<div class="flex flex-col gap-y-16">
+  <div class="relative w-full max-w-7xl mx-auto overflow-hidden">
+    <h4
+      class="text-lg font-semibold text-blue-700 dark:text-blue-400 flex items-center gap-2 cursor-default select-none"
+    >
+      <Add />
+      Puedes hacer clic en la imagen para verla completa
+    </h4>
+    <div
+      id="course-slider"
+      class="flex transition-transform duration-700 ease-in-out will-change-transform"
+      style="transform: translateX(0);"
+    >
+      {
+        loopedCourses.map((course, index) => (
+          <CourseCard course={course} key={index} />
+        ))
+      }
+    </div>
+
+    <SliderButton direction="prev" />
+    <SliderButton direction="next" />
+  </div>
+</div>
+
+<div
+  id="image-modal"
+  class="fixed inset-0 bg-opacity-70 flex items-center justify-center opacity-0 pointer-events-none transition-opacity"
+>
+  <img
+    id="modal-image"
+    src=""
+    alt="Imagen ampliada"
+    class="max-w-[80vw] max-h-[80vh] rounded-xl shadow-lg"
+  />
+</div>
+
+<script>
+  const slider = document.getElementById("course-slider");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  if (!slider) {
+    throw new Error("No se encontró el elemento #course-slider");
+  }
+  const totalSlides = slider.children.length;
+  const realItemsCount = totalSlides / 3;
+  let currentIndex = realItemsCount;
+
+  const cardWidth = 300 + 32;
+
+  function updatePosition(animate = true) {
+    if (!slider) return;
+
+    if (!animate) {
+      slider.style.transition = "none";
+    } else {
+      slider.style.transition = "transform 0.7s ease-in-out";
+    }
+
+    slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+  }
+
+  function moveSlide(direction: number) {
+    currentIndex += direction;
+    updatePosition(true);
+
+    setTimeout(() => {
+      if (currentIndex >= totalSlides - realItemsCount) {
+        currentIndex = realItemsCount;
+        updatePosition(false);
+      } else if (currentIndex < realItemsCount) {
+        currentIndex = totalSlides - realItemsCount * 2;
+        updatePosition(false);
+      }
+    }, 700);
+  }
+
+  prevBtn?.addEventListener("click", () => moveSlide(-1));
+  nextBtn?.addEventListener("click", () => moveSlide(1));
+
+  setInterval(() => moveSlide(1), 4000);
+
+  updatePosition(false);
+</script>

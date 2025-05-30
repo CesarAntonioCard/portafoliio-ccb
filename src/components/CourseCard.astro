@@ -1,0 +1,81 @@
+---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+interface Tag {
+  name: string;
+  class: string;
+  icon?: string | AstroComponentFactory;
+}
+
+interface Course {
+  title: string;
+  image: string | { src: string };
+  tags: Tag[];
+}
+
+const { course } = Astro.props as { course: Course };
+const imageUrl =
+  typeof course.image === "string" ? course.image : course.image.src;
+---
+
+<div
+  class="group relative w-[80vw] sm:w-72 flex-shrink-0 transition-transform duration-500 hover:scale-[1.08] rounded-3xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.2)] border border-white/20 dark:border-slate-700 backdrop-blur-xl bg-white/20 dark:bg-slate-900/60 hover:ring-2 hover:ring-blue-950 dark:hover:ring-white hover:ring-offset-2 hover:ring-offset-white/10 motion-safe:animate-fade-in-up before:absolute before:inset-0 before:rounded-3xl before:bg-white/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity"
+>
+  <div class="relative">
+    <img
+      src={imageUrl}
+      alt={course.title}
+      class="w-full h-48 object-cover cursor-pointer"
+      onclick="openModal(this.src)"
+      tabindex="0"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"
+    >
+    </div>
+  </div>
+
+  <div class="p-4 space-y-2 text-gray-800 dark:text-gray-100">
+    <h3
+      class="text-lg font-semibold bg-gradient-to-r from-blue-950 to-blue-950 bg-clip-text text-transparent group-hover:brightness-125 transition-all dark:from-white dark:to-white"
+    >
+      {course.title}
+    </h3>
+
+    <div class="flex flex-wrap gap-2">
+      {
+        course.tags.map((tag: Tag) => (
+          <span
+            class={`px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${tag.class} backdrop-blur-md transition-all`}
+          >
+            {typeof tag.icon === "string" ? (
+              <span>{tag.icon}</span>
+            ) : tag.icon ? (
+              <tag.icon class="size-5 group-hover:scale-110 transition-transform duration-300" />
+            ) : null}
+            {tag.name}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  window.openModal =
+    window.openModal ||
+    function (src) {
+      const modal = document.getElementById("image-modal");
+      const modalImage = document.getElementById("modal-image");
+
+      modalImage.src = src;
+      modal.classList.remove("opacity-0", "pointer-events-none");
+      modal.classList.add("opacity-100", "pointer-events-auto");
+
+      modal.onclick = () => {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modal.classList.remove("opacity-100", "pointer-events-auto");
+        modalImage.src = "";
+      };
+    };
+</script>
