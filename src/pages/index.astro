@@ -3,6 +3,8 @@ import "../styles/global.css";
 
 import Layout from "@/layouts/Layout.astro";
 
+import Course from "@/components/Course.astro";
+import Skills from "@/components/Skills.astro";
 import AboutMe from "@/components/AboutMe.astro";
 import Briefcase from "@/components/icons/Briefcase.astro";
 import CodeIcon from "@/components/icons/Code.astro";
@@ -14,6 +16,7 @@ import Hero from "@/components/Hero.astro";
 import TitleSection from "@/components/TitleSection.astro";
 
 import Curso from "@/assets/cursos.svg";
+import Skill from "@/assets/skill.svg";
 ---
 
 <Layout
@@ -21,7 +24,7 @@ import Curso from "@/assets/cursos.svg";
   description="Contrata a César Cardozo para crear tu aplicación web o de escritorio. Desarrollador Web y desarrollador de software. Especializado en crear aplicaciones únicas."
 >
   <main class="px-4">
-    <SectionContainer id="contacto" class="py-20 md:py-24">
+    <SectionContainer id="presentación" class="py-20 md:py-24">
       <Hero />
     </SectionContainer>
   </main>
@@ -32,6 +35,14 @@ import Curso from "@/assets/cursos.svg";
         Experiencia laboral
       </TitleSection>
       <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="skills">
+      <TitleSection>
+        <Skill class="size-8" />
+        Skills
+      </TitleSection>
+      <Skills />
     </SectionContainer>
 
     <SectionContainer id="proyectos">
@@ -47,6 +58,7 @@ import Curso from "@/assets/cursos.svg";
         <Curso class="size-8" />
         Cursos
       </TitleSection>
+      <Course />
     </SectionContainer>
 
     <SectionContainer id="sobre-mi">

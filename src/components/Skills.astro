@@ -1,0 +1,380 @@
+---
+import MongoDBIcon from "@/components/icons/basedatos/MongoDB.astro";
+import MySQLIcon from "@/components/icons/basedatos/MySQL.astro";
+import PostgresSqlIcon from "@/components/icons/basedatos/PostgreSql.astro";
+import SQLServerIcon from "@/components/icons/basedatos/SQLServer.astro";
+
+import AngularIcon from "@/components/icons/framework/Angular.astro";
+import AstroIcon from "@/components/icons/framework/Astro.astro";
+import BootstrapIcon from "@/components/icons/framework/Bootstrap.astro";
+import ExpressJsIcon from "@/components/icons/framework/ExpressJs.astro";
+import MaterialUIIcon from "@/components/icons/framework/MaterialUI.astro";
+import PM2Icon from "@/components/icons/framework/PM2.astro";
+import SpringIcon from "@/components/icons/framework/Spring.astro";
+import TailwindIcon from "@/components/icons/framework/Tailwind.astro";
+
+import CIcon from "@/components/icons/languaje/C.astro";
+import CSSIcon from "@/components/icons/languaje/CSS.astro";
+import HtmlIcon from "@/components/icons/languaje/HTML.astro";
+import JavaIcon from "@/components/icons/languaje/Java.astro";
+import JavascriptIcon from "@/components/icons/languaje/JavaScript.astro";
+import JsonIcon from "@/components/icons/languaje/Json.astro";
+import MarkdownIcon from "@/components/icons/languaje/Markdown.astro";
+import PHPIcon from "@/components/icons/languaje/PHP.astro";
+import PythonIcon from "@/components/icons/languaje/Python.astro";
+import TypescriptIcon from "@/components/icons/languaje/TypeScript.astro";
+
+import CharJsIcon from "@/components/icons/librerias/CharJs.astro";
+import DotEnvIcon from "@/components/icons/librerias/dotEnv.astro";
+import JWTIcon from "@/components/icons/librerias/JWT.astro";
+import NodeJsIcon from "@/components/icons/librerias/NodeJs.astro";
+import PrettierIcon from "@/components/icons/librerias/Prettier.astro";
+import ReactIcon from "@/components/icons/librerias/React.astro";
+import ReduxIcon from "@/components/icons/librerias/Redux.astro";
+import ReactRouterIcon from "@/components/icons/librerias/ReactRouter.astro";
+import ShadcnIcon from "@/components/icons/librerias/Shadcn.astro";
+
+import AndroidIcon from "@/components/icons/software/Android.astro";
+import AtlassianIcon from "@/components/icons/software/Atlassian.astro";
+import CiscoIcon from "@/components/icons/software/Cisco.astro";
+import DockerIcon from "@/components/icons/software/Docker.astro";
+import EclipseIcon from "@/components/icons/software/Eclipse.astro";
+import GitIcon from "@/components/icons/software/Git.astro";
+import GithubIcon from "@/components/icons/software/GitHub.astro";
+import IBMIcon from "@/components/icons/software/IBM.astro";
+import IntelliJIcon from "@/components/icons/software/IntelliJ.astro";
+import LinuxIcon from "@/components/icons/software/Linux.astro";
+import NPMIcon from "@/components/icons/software/NPM.astro";
+import PNPMIcon from "@/components/icons/software/PNPM.astro";
+import PostmanIcon from "@/components/icons/software/Postman.astro";
+import PrismaIcon from "@/components/icons/software/Prismas.astro";
+import SwaggerIcon from "@/components/icons/software/Swagger.astro";
+import UbuntuIcon from "@/components/icons/software/Ubuntu.astro";
+import VscodeIcon from "@/components/icons/software/VisualCode.astro";
+import VisualStudioIcon from "@/components/icons/software/VisualStudio.astro";
+import FirebaseIcon from "@/components/icons/software/Firebase.astro";
+
+import FigmaIcon from "@/components/icons/Figma.astro";
+import ViteIcon from "@/components/icons/Vite.astro";
+
+const CATEGORIES = [
+  {
+    title: "Lenguajes",
+    tags: [
+      {
+        name: "HTML",
+        icon: HtmlIcon,
+        class: "bg-orange-300 text-black dark:bg-orange-100 dark:text-black",
+      },
+      {
+        name: "CSS",
+        icon: CSSIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "JavaScript",
+        icon: JavascriptIcon,
+        class: "bg-yellow-200 text-black dark:bg-yellow-100 dark:text-black",
+      },
+      {
+        name: "TypeScript",
+        icon: TypescriptIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "Python",
+        icon: PythonIcon,
+        class: "bg-yellow-300 text-black dark:bg-yellow-50 dark:text-black",
+      },
+      {
+        name: "Java",
+        icon: JavaIcon,
+        class: "bg-red-300 text-black dark:bg-red-100 dark:text-black",
+      },
+      {
+        name: "C#",
+        icon: CIcon,
+        class: "bg-purple-300 text-black dark:bg-purple-100 dark:text-black",
+      },
+      {
+        name: "PHP",
+        icon: PHPIcon,
+        class: "bg-indigo-300 text-black dark:bg-indigo-100 dark:text-black",
+      },
+      {
+        name: "JSON",
+        icon: JsonIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-50 dark:text-black",
+      },
+      {
+        name: "Markdown",
+        icon: MarkdownIcon,
+        class: "bg-zinc-300 text-black dark:bg-zinc-50 dark:text-black",
+      },
+    ],
+  },
+  {
+    title: "Frameworks y Librerías",
+    tags: [
+      {
+        name: "React",
+        icon: ReactIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-50 dark:text-black",
+      },
+      {
+        name: "Redux",
+        icon: ReduxIcon,
+        class: "bg-purple-300 text-black dark:bg-purple-100 dark:text-black",
+      },
+      {
+        name: "React Router",
+        icon: ReactRouterIcon,
+        class: "bg-pink-300 text-black dark:bg-pink-100 dark:text-black",
+      },
+      {
+        name: "Astro",
+        icon: AstroIcon,
+        class: "bg-orange-200 text-black dark:bg-yellow-50 dark:text-black",
+      },
+      {
+        name: "Angular",
+        icon: AngularIcon,
+        class: "bg-red-300 text-black dark:bg-red-100 dark:text-black",
+      },
+      {
+        name: "Tailwind",
+        icon: TailwindIcon,
+        class: "bg-cyan-300 text-black dark:bg-cyan-100 dark:text-black",
+      },
+      {
+        name: "Bootstrap",
+        icon: BootstrapIcon,
+        class: "bg-indigo-300 text-black dark:bg-indigo-100 dark:text-black",
+      },
+      {
+        name: "Material UI",
+        icon: MaterialUIIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "Shadcn",
+        icon: ShadcnIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-50 dark:text-black",
+      },
+      {
+        name: "Vite",
+        icon: ViteIcon,
+        class: "bg-violet-300 text-black dark:bg-violet-100 dark:text-black",
+      },
+      {
+        name: "Chart.js",
+        icon: CharJsIcon,
+        class: "bg-pink-300 text-black dark:bg-pink-100 dark:text-black",
+      },
+    ],
+  },
+  {
+    title: "Backend",
+    tags: [
+      {
+        name: "Node.js",
+        icon: NodeJsIcon,
+        class: "bg-green-300 text-black dark:bg-green-100 dark:text-black",
+      },
+      {
+        name: "Express.js",
+        icon: ExpressJsIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-100 dark:text-black",
+      },
+      {
+        name: "Spring",
+        icon: SpringIcon,
+        class: "bg-green-300 text-black dark:bg-green-100 dark:text-black",
+      },
+      {
+        name: "JWT",
+        icon: JWTIcon,
+        class: "bg-yellow-200 text-black dark:bg-yellow-100 dark:text-black",
+      },
+      {
+        name: "dotenv",
+        icon: DotEnvIcon,
+        class: "bg-lime-300 text-black dark:bg-lime-100 dark:text-black",
+      },
+    ],
+  },
+  {
+    title: "Bases de Datos",
+    tags: [
+      {
+        name: "MongoDB",
+        icon: MongoDBIcon,
+        class: "bg-green-300 text-black dark:bg-green-100 dark:text-black",
+      },
+      {
+        name: "MySQL",
+        icon: MySQLIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "PostgreSQL",
+        icon: PostgresSqlIcon,
+        class: "bg-indigo-300 text-black dark:bg-indigo-100 dark:text-black",
+      },
+      {
+        name: "SQL Server",
+        icon: SQLServerIcon,
+        class: "bg-red-300 text-black dark:bg-red-100 dark:text-black",
+      },
+      {
+        name: "Firebase",
+        icon: FirebaseIcon,
+        class: "bg-yellow-200 text-black dark:bg-yellow-50 dark:text-black",
+      },
+      {
+        name: "Prisma",
+        icon: PrismaIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-100 dark:text-black",
+      },
+    ],
+  },
+  {
+    title: "Software y Herramientas",
+    tags: [
+      {
+        name: "VS Code",
+        icon: VscodeIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "Visual Studio",
+        icon: VisualStudioIcon,
+        class: "bg-indigo-300 text-black dark:bg-indigo-100 dark:text-black",
+      },
+      {
+        name: "Figma",
+        icon: FigmaIcon,
+        class: "bg-pink-300 text-black dark:bg-pink-100 dark:text-black",
+      },
+      {
+        name: "Git",
+        icon: GitIcon,
+        class: "bg-orange-300 text-black dark:bg-orange-100 dark:text-black",
+      },
+      {
+        name: "GitHub",
+        icon: GithubIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-50 dark:text-black",
+      },
+      {
+        name: "Docker",
+        icon: DockerIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "Postman",
+        icon: PostmanIcon,
+        class: "bg-orange-300 text-black dark:bg-orange-100 dark:text-black",
+      },
+      {
+        name: "Android Studio",
+        icon: AndroidIcon,
+        class: "bg-green-300 text-black dark:bg-green-100 dark:text-black",
+      },
+      {
+        name: "Eclipse",
+        icon: EclipseIcon,
+        class: "bg-indigo-300 text-black dark:bg-indigo-100 dark:text-black",
+      },
+      {
+        name: "IntelliJ",
+        icon: IntelliJIcon,
+        class: "bg-purple-300 text-black dark:bg-purple-100 dark:text-black",
+      },
+      {
+        name: "IBM",
+        icon: IBMIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "Cisco",
+        icon: CiscoIcon,
+        class: "bg-blue-200 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "Ubuntu",
+        icon: UbuntuIcon,
+        class: "bg-orange-300 text-black dark:bg-orange-100 dark:text-black",
+      },
+      {
+        name: "Linux",
+        icon: LinuxIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-100 dark:text-black",
+      },
+      {
+        name: "Atlassian",
+        icon: AtlassianIcon,
+        class: "bg-blue-300 text-black dark:bg-blue-100 dark:text-black",
+      },
+      {
+        name: "NPM",
+        icon: NPMIcon,
+        class: "bg-red-300 text-black dark:bg-red-100 dark:text-black",
+      },
+      {
+        name: "PNPM",
+        icon: PNPMIcon,
+        class: "bg-yellow-200 text-black dark:bg-yellow-100 dark:text-black",
+      },
+      {
+        name: "Swagger",
+        icon: SwaggerIcon,
+        class: "bg-green-300 text-black dark:bg-green-100 dark:text-black",
+      },
+      {
+        name: "Prettier",
+        icon: PrettierIcon,
+        class: "bg-gray-300 text-black dark:bg-gray-50 dark:text-black",
+      },
+      {
+        name: "PM2",
+        icon: PM2Icon,
+        class: "bg-gray-300 text-black dark:bg-gray-50 dark:text-black",
+      },
+    ],
+  },
+];
+---
+
+<div class="space-y-8">
+  {
+    CATEGORIES.map((category) => (
+      <div class="space-y-4">
+        <h2 class="text-2xl font-bold tracking-wide text-blue-900 dark:text-cyan-400 drop-shadow-md">
+          {category.title}
+        </h2>
+        <ul class="flex flex-wrap gap-3">
+          {category.tags.map((tag) => {
+            const Icon = tag.icon;
+            return (
+              <li>
+                <span
+                  class={`
+                    flex items-center justify-center gap-2
+                    min-w-[150px] h-9 px-3 rounded-full
+                    text-sm font-medium shadow-sm border
+                    ${tag.class}
+                    transition duration-200 ease-in-out hover:scale-[1.05]
+                  `}
+                >
+                  {Icon ? <Icon class="w-5 h-5 shrink-0" /> : null}
+                  {tag.name}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))
+  }
+</div>
