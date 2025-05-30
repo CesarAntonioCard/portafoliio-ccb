@@ -468,12 +468,10 @@ const COURSES: Course[] = [
     ],
   },
 ];
-
-const loopedCourses = [...COURSES, ...COURSES, ...COURSES];
 ---
 
 <div class="flex flex-col gap-y-16">
-  <div class="relative w-full max-w-7xl mx-auto overflow-hidden">
+  <div class="relative w-full max-w-7xl mx-auto overflow-hidden py-5">
     <h4
       class="text-lg font-semibold text-blue-700 dark:text-blue-400 flex items-center gap-2 cursor-default select-none"
     >
@@ -486,7 +484,7 @@ const loopedCourses = [...COURSES, ...COURSES, ...COURSES];
       style="transform: translateX(0);"
     >
       {
-        loopedCourses.map((course, index) => (
+        COURSES.map((course, index) => (
           <CourseCard course={course} key={index} />
         ))
       }
@@ -510,49 +508,57 @@ const loopedCourses = [...COURSES, ...COURSES, ...COURSES];
 </div>
 
 <script>
-  const slider = document.getElementById("course-slider");
-  const prevBtn = document.getElementById("prev");
-  const nextBtn = document.getElementById("next");
-  if (!slider) {
-    throw new Error("No se encontró el elemento #course-slider");
-  }
-  const totalSlides = slider.children.length;
-  const realItemsCount = totalSlides / 3;
-  let currentIndex = realItemsCount;
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.getElementById("course-slider");
+    const prevBtn = document.querySelector('button[data-direction="prev"]');
+    const nextBtn = document.querySelector('button[data-direction="next"]');
 
-  const cardWidth = 300 + 32;
+    if (!slider || !prevBtn || !nextBtn) return;
 
-  function updatePosition(animate = true) {
-    if (!slider) return;
+    const sliderElement = slider;
 
-    if (!animate) {
-      slider.style.transition = "none";
-    } else {
-      slider.style.transition = "transform 0.7s ease-in-out";
+    const firstCard = sliderElement.querySelector(".course-card");
+    const cardRect = firstCard?.getBoundingClientRect();
+    const cardWidth = cardRect?.width ?? 272;
+
+    const visibleContainerWidth =
+      sliderElement.parentElement?.getBoundingClientRect().width ?? 0;
+
+    const totalCards = sliderElement.querySelectorAll(".course-card").length;
+    const totalWidth = totalCards * cardWidth;
+    const maxNegativeTranslateX = visibleContainerWidth - totalWidth;
+
+    let currentTranslateX = 0;
+
+    function updateSlider() {
+      sliderElement.style.transform = `translateX(${currentTranslateX}px)`;
     }
 
-    slider.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-  }
-
-  function moveSlide(direction: number) {
-    currentIndex += direction;
-    updatePosition(true);
-
-    setTimeout(() => {
-      if (currentIndex >= totalSlides - realItemsCount) {
-        currentIndex = realItemsCount;
-        updatePosition(false);
-      } else if (currentIndex < realItemsCount) {
-        currentIndex = totalSlides - realItemsCount * 2;
-        updatePosition(false);
+    nextBtn.addEventListener("click", () => {
+      if (currentTranslateX > maxNegativeTranslateX) {
+        currentTranslateX -= cardWidth;
+        if (currentTranslateX < maxNegativeTranslateX) {
+          currentTranslateX = maxNegativeTranslateX;
+        }
+        sliderElement.style.transform = `translateX(${currentTranslateX}px)`;
       }
-    }, 700);
-  }
+    });
 
-  prevBtn?.addEventListener("click", () => moveSlide(-1));
-  nextBtn?.addEventListener("click", () => moveSlide(1));
-
-  setInterval(() => moveSlide(1), 4000);
-
-  updatePosition(false);
+    prevBtn.addEventListener("click", () => {
+      if (currentTranslateX < 0) {
+        currentTranslateX += cardWidth;
+        if (currentTranslateX > 0) {
+          currentTranslateX = 0;
+        }
+        sliderElement.style.transform = `translateX(${currentTranslateX}px)`;
+      }
+    });
+    setInterval(() => {
+      currentTranslateX -= cardWidth;
+      if (currentTranslateX <= maxNegativeTranslateX) {
+        currentTranslateX = 0;
+      }
+      updateSlider();
+    }, 4000);
+  });
 </script>
