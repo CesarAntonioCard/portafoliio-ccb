@@ -1,3 +1,7 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <footer
   class="relative mt-24 w-full max-w-4xl mx-auto px-6 py-10 rounded-2xl shadow-2xl font-mono tracking-wide
     text-center bg-gradient-to-br from-white/80 to-blue-50/60 dark:from-blue-900/40 dark:to-blue-800/30
@@ -8,7 +12,7 @@
       Gracias por visitar mi portafolio
     </p>
     <p class="text-sm md:text-base leading-relaxed">
-      © <span id="year"></span>
+      © {currentYear}{" "}
       <a
         href="/#contacto"
         class="hover:text-cyan-400 underline underline-offset-4 decoration-dotted transition-colors duration-300"
@@ -38,9 +42,4 @@
   </svg>
 </a>
 
-<script>
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = String(new Date().getFullYear());
-  }
-</script>
+<script></script>
