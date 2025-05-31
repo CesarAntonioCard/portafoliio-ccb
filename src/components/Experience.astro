@@ -1,36 +1,116 @@
 ---
+import ReactIcon from "@/components/icons/librerias/React.astro";
+import DockerIcon from "@/components/icons/software/Docker.astro";
+import SpringIcon from "@/components/icons/framework/Spring.astro";
+
+import PostgreSqlIcon from "@/components/icons/basedatos/PostgreSql.astro";
+import SQLServerIcon from "@/components/icons/basedatos/SQLServer.astro";
+import MicrosoftIcon from "@/components/icons/Microsoft.astro";
+import MySQLIcon from "@/components/icons/basedatos/MySQL.astro";
+import PHPIcon from "@/components/icons/languaje/PHP.astro";
+import BootstrapIcon from "@/components/icons/framework/Bootstrap.astro";
+
+import CIcon from "@/components/icons/languaje/C.astro";
+
 import ExperienceItem from "./ExperienceItem.astro";
 const EXPERIENCE = [
   {
     date: "Actualmente...",
     title: "Practicante de Software",
     company: "MS4M",
-    description: `Desarrollo full stack: front en React y back con Java Spring Boot. 
-    Diseño y mantenimiento de pipelines ETL usando Debezium y Kafka. 
-    Administración y consulta de bases de datos PostgreSQL.`,
+    description: `Responsable del desarrollo full stack en una aplicación interna, utilizando React para el frontend y Spring Boot para construir APIs REST. 
+Diseñé e implementé pipelines ETL usando Debezium y Kafka para el procesamiento de datos en tiempo real. 
+Configuré entornos con Docker para bases de datos PostgreSQL, servicios de mensajería y herramientas de integración continua.`,
+    tags: [
+      {
+        name: "React",
+        icon: ReactIcon,
+        class: "bg-blue-100 text-blue-800 border-blue-400",
+      },
+      {
+        name: "Spring Boot",
+        icon: SpringIcon,
+        class: "bg-green-100 text-green-800 border-green-400",
+      },
+      {
+        name: "PostgreSQL",
+        icon: PostgreSqlIcon,
+        class: "bg-indigo-100 text-indigo-800 border-indigo-400",
+      },
+      {
+        name: "Docker",
+        icon: DockerIcon,
+        class: "bg-indigo-100 text-indigo-800 border-indigo-400",
+      },
+    ],
   },
   {
     date: "Diciembre 2024",
     title: "Especialista informático",
     company: "Corte Superior de Justicia Cajamarca",
-    description: `Administración de usuarios en Active Directory: creación, modificación y permisos.
-    Inventario y control de equipos informáticos actualizados.
-    Soporte en configuración y resolución de problemas de red.`,
+    description: `Gestión de usuarios en Active Directory: creación, modificación de cuentas y asignación de permisos. 
+Apoyo en el inventario de hardware institucional, incluyendo computadoras, impresoras y equipos especializados como ticketeras. 
+Soporte técnico en formateo, configuración de red y mantenimiento de estaciones de trabajo. 
+Colaboración en la instalación y configuración de 200 tablets para los jueces de paz. 
+Acceso remoto a servidores para revisión de estadísticas y consultas en bases de datos SQL Server.`,
+    tags: [
+      {
+        name: "Microsoft",
+        icon: MicrosoftIcon,
+        class: "bg-blue-100 text-blue-800 border-blue-400",
+      },
+      {
+        name: "SQL Server",
+        icon: SQLServerIcon,
+        class: "bg-red-100 text-red-800 border-red-400",
+      },
+    ],
   },
   {
     date: "Octubre 2024",
     title: "Desarrollador web",
     company: "NEONHOUSELED SAC",
-    description: `Corrección de errores visuales en sitios YUNTAS, TAMI y NHL con PHP, HTML y CSS.
-    Optimización de rendimiento, accesibilidad y SEO.
-    Apoyo en reclutamiento mediante pruebas técnicas.`,
+    description: `Desarrollo y mantenimiento de aplicaciones web con PHP y MySQL, incluyendo funcionalidades de e-commerce, blog, y dashboards para clientes y administradores. 
+Corrección de errores visuales en sitios existentes (YUNTAS, TAMI y NHL) utilizando HTML, CSS y Bootstrap. 
+Mejoras en rendimiento, accesibilidad y SEO según métricas de Lighthouse. 
+Apoyo en procesos de reclutamiento técnico mediante la elaboración y revisión de pruebas.`,
+    tags: [
+      {
+        name: "PHP",
+        icon: PHPIcon,
+        class: "bg-indigo-100 text-indigo-800 border-indigo-400",
+      },
+      {
+        name: "MySQL",
+        icon: MySQLIcon,
+        class: "bg-yellow-100 text-yellow-800 border-yellow-400",
+      },
+      {
+        name: "Bootstrap",
+        icon: BootstrapIcon,
+        class: "bg-purple-100 text-purple-800 border-purple-400",
+      },
+    ],
   },
   {
     date: "Noviembre 2023",
     title: "Desarrollador de software",
     company: "HML INGENIERÍA CONSTRUCCIÓN Y SERVICIOS GENERALES",
-    description: `Desarrollo de software en C# para gestión de clientes, productos y cotizaciones con cálculo de utilidad.
-    Implementación de base de datos SQL Server para almacenamiento eficiente.`,
+    description: `Desarrollo completo de software de gestión en C# para administración de clientes, productos y cotizaciones, incluyendo cálculo automático de utilidades. 
+Diseño e implementación de base de datos en SQL Server para almacenamiento estructurado y consultas eficientes. 
+Liderazgo de un equipo de 4 desarrolladores utilizando la metodología ágil SCRUM, organizando sprints semanales para monitorear avances y asegurar entregables de calidad.`,
+    tags: [
+      {
+        name: "C#",
+        icon: CIcon,
+        class: "bg-blue-100 text-blue-800 border-blue-400",
+      },
+      {
+        name: "SQL Server",
+        icon: SQLServerIcon,
+        class: "bg-red-100 text-red-800 border-red-400",
+      },
+    ],
   },
 ];
 ---
