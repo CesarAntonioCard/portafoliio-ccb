@@ -11,7 +11,7 @@ const navItems = [
 ];
 ---
 
-<header class="fixed top-2 md:top-4 z-50 w-full px-4">
+<header class="fixed top-0 md:top-4 z-10 w-full px-4">
   <div
     class="flex justify-between items-center
   bg-white/10 dark:bg-blue-900/40 backdrop-blur-md
@@ -83,45 +83,6 @@ const navItems = [
 </header>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("header nav a");
-
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            const indicator = item.querySelector("span");
-            if (item.getAttribute("aria-label") === entry.target.id) {
-              item.classList.add("text-cyan-400", "dark:text-cyan-200");
-              item.classList.remove("text-gray-700", "dark:text-cyan-300");
-              if (indicator) indicator.style.width = "50%";
-            } else {
-              item.classList.remove("text-cyan-400", "dark:text-cyan-200");
-              item.classList.add("text-gray-700", "dark:text-cyan-300");
-              if (indicator) indicator.style.width = "0";
-            }
-          });
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    });
-
-    sections.forEach((section) => observer.observe(section));
-
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") observer.disconnect();
-      else sections.forEach((section) => observer.observe(section));
-    };
-  });
-</script>
-
-<script>
   document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.getElementById("menu-toggle");
     const menu = document.getElementById("mobile-menu");
@@ -131,13 +92,3 @@ const navItems = [
     });
   });
 </script>
-
-<style>
-  header nav a {
-    cursor: pointer;
-  }
-
-  header nav a:hover span {
-    width: 50% !important;
-  }
-</style>
